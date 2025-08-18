@@ -1,0 +1,63 @@
+.app {
+  max-width: 540px;
+  padding: 20px;
+  background: #111a33;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #2a3a66;
+  background: #0c1630;
+  color: #e6e6e6;
+  outline: none;
+}
+
+.addBtn, .clearBtn {
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.addBtn { background: #5865f2; color: white; }
+.addBtn:disabled { opacity: .6; cursor: not-allowed; }
+.clearBtn { background: #223159; color: #d2dcff; }
+
+.list { display: grid; gap: 8px; }
+
+.item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #0d1732;
+  border: 1px solid #243462;
+  border-radius: 12px;
+}
+
+.checkbox {
+  width: 18px; height: 18px;
+}
+
+.text { word-break: break-word; }
+.text.done { text-decoration: line-through; color: #98a2b3; }
+
+.delBtn {
+  background: transparent;
+  color: #ff9aa2;
+  border: 1px solid #61333b;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
