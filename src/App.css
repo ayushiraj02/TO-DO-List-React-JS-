@@ -61,3 +61,29 @@
   border-radius: 10px;
   cursor: pointer;
 }
+.addBtn, .clearBtn, .delBtn {
+  transition: all 0.2s ease;
+}
+.addBtn:hover { background: #4752c4; }
+.delBtn:hover { background: #61333b; }
+
+
+/* Add these styles */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editBtn {
+  background: transparent;
+  color: #a0a0ff;
+  border: 1px solid #3a3a7a;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editBtn:hover {
+  background: #3a3a7a;
+}
