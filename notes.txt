@@ -1,0 +1,90 @@
+1. Adding a New Task
+Flow: AddTodo.js → App.js → (State Update) → LocalStorage
+Files Involved:
+
+1)AddTodo.js
+
+User types in input → onChange updates local text state
+On form submit → calls onAdd(text) from props
+
+2)App.js
+Receives onAdd call → executes addTodo() function:
+js code 
+setTodos(prev => [...prev, {id: Date.now(), text, completed: false}])
+
+Triggers useEffect → saves to localStorage 
+
+
+
+
+
+
+2. Editing a Task
+
+Flow: TodoItem.js → TodoList.js → App.js → (State Update) → LocalStorage
+Files Involved:
+
+1)TodoItem.js
+
+Click "Edit" → switches to input mode (isEditing state)
+On "Save" → calls onEdit(id, newText) from props
+
+2)TodoList.js
+Passes through onEdit prop from App to TodoItem
+
+3)App.js
+Receives onEdit call → executes editTodo():
+js code
+setTodos(prev => prev.map(t => t.id === id ? {...t, text: newText} : t))
+
+Triggers useEffect → updates localStorage
+
+
+
+
+
+
+3. Deleting a Task
+
+Flow: TodoItem.js → TodoList.js → App.js → (State Update) → LocalStorage
+Files Involved:
+
+1)TodoItem.js
+Click "Delete" → shows confirmation dialog
+If confirmed → calls onDelete(id) from props
+
+2)TodoList.js
+Passes through onDelete prop from App to TodoItem
+
+3)App.js
+Receives onDelete call → executes deleteTodo():
+js code
+setTodos(prev => prev.filter(t => t.id !== id))
+
+Triggers useEffect → updates localStorage
+
+
+
+
+
+Visual Flowchart
+
+User Interaction → Component → App (State Change) → localStorage
+│
+├─ Add Task:    AddTodo.js    → App.addTodo()  
+├─ Edit Task:   TodoItem.js   → TodoList.js → App.editTodo()  
+└─ Delete Task: TodoItem.js   → TodoList.js → App.deleteTodo()  
+
+
+
+
+Key State Management
+Single Source of Truth: todos state in App.js
+Persistence: useEffect in App.js syncs to localStorage
+
+Prop Drilling:
+App.js → TodoList.js → TodoItem.js (for edit/delete)
+App.js ← AddTodo.js (for add)
+
+
+All changes flow through App.js first, ensuring centralized state management. 🚀

@@ -34,14 +34,12 @@
 
 // export default App
 
-
 import { useState, useEffect } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import "./App.css";
 
 function App() {
-  // 1) Load from localStorage once
   const [todos, setTodos] = useState(() => {
     try {
       const saved = localStorage.getItem("todos");
@@ -51,12 +49,17 @@ function App() {
     }
   });
 
-  // 2) Save to localStorage whenever todos change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  // Add new task
+  // Define editTodo BEFORE using it in JSX
+  const editTodo = (id, newText) => {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, text: newText } : t))
+    );
+  };
+
   const addTodo = (text) => {
     setTodos((prev) => [
       ...prev,
@@ -64,7 +67,6 @@ function App() {
     ]);
   };
 
-  // Toggle completed
   const toggleTodo = (id) => {
     setTodos((prev) =>
       prev.map((t) =>
@@ -73,12 +75,10 @@ function App() {
     );
   };
 
-  // Delete task
   const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
-  // Clear completed (nice extra)
   const clearCompleted = () => {
     setTodos((prev) => prev.filter((t) => !t.completed));
   };
@@ -95,6 +95,7 @@ function App() {
         todos={todos}
         onToggle={toggleTodo}
         onDelete={deleteTodo}
+        onEdit={editTodo}  
       />
 
       <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
@@ -108,4 +109,3 @@ function App() {
 }
 
 export default App;
-
