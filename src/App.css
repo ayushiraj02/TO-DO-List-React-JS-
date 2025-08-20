@@ -1,25 +1,33 @@
 .app {
   max-width: 540px;
   padding: 20px;
-  background: #111a33;
+  background: #152044; /* richer navy */
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .header {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 10px;
+  background: #0d1732;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #243462;
+  margin-bottom: 10px;
 }
 
 .input {
   flex: 1;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #2a3a66;
-  background: #0c1630;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
   color: #e6e6e6;
-  outline: none;
+}
+
+.input::placeholder {
+  color: #6b7280;
 }
 
 .addBtn, .clearBtn {
@@ -29,34 +37,46 @@
   cursor: pointer;
 }
 
-.addBtn { background: #5865f2; color: white; }
+
+.addBtn { background: #3b82f6; color: white; } /* blue */
+.addBtn:hover { background: #2563eb; }
 .addBtn:disabled { opacity: .6; cursor: not-allowed; }
+
 .clearBtn { background: #223159; color: #d2dcff; }
 
 .list { display: grid; gap: 8px; }
 
 .item {
-  display: grid;
-  grid-template-columns: 28px 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  background: #0d1732;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #111a33;
   border: 1px solid #243462;
   border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
+
+.item:hover {
+  background: #162040;
+  transform: translateY(-2px);
+}
+
+.text.done {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
 
 .checkbox {
   width: 18px; height: 18px;
 }
 
-.text { word-break: break-word; }
-.text.done { text-decoration: line-through; color: #98a2b3; }
-
 .delBtn {
   background: transparent;
-  color: #ff9aa2;
-  border: 1px solid #61333b;
+  color: #ef4444;  
+  border: 1px solid #7f1d1d;
   padding: 6px 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -65,7 +85,8 @@
   transition: all 0.2s ease;
 }
 .addBtn:hover { background: #4752c4; }
-.delBtn:hover { background: #61333b; }
+.delBtn:hover { background: #7f1d1d; }
+
 
 
 /* Add these styles */
@@ -76,14 +97,82 @@
 
 .editBtn {
   background: transparent;
-  color: #a0a0ff;
-  border: 1px solid #3a3a7a;
+
+  color: #10b981;  /* teal/green */
+  border: 1px solid #065f46;
+
   padding: 6px 10px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.editBtn:hover {
-  background: #3a3a7a;
+.editBtn:hover { background: #065f46; }
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  gap: 10px; 
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #0c1630;
+  border: 1px solid #2a3a66;
+  color: #e6e6e6;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: #223159;
+}
+
+.filter-btn.active {
+  background: #3b82f6; /* consistent with Add */
+  border-color: #3b82f6;
+}
+
+
+.edit-mode {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.text-container {
+  flex: 1;
+}
+
+.due-date {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
+.due-date.overdue { color: #ef4444; font-weight: 600; }
+.due-date.upcoming { color: #facc15; } 
+
+
+.date-input {
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #2a3a66;
+  background: #0c1630;
+  color: #e6e6e6;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #98a2b3;
+}
+
+.footer button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
 }

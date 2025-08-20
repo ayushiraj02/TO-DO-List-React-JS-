@@ -1,7 +1,8 @@
 // loops over tasks and renders items
+// src/components/TodoList.jsx
 import TodoItem from "./TodoItem";
 
-function TodoList({ todos, onToggle, onDelete, onEdit }) {
+function TodoList({ todos, onToggle, onDelete, onEdit,onUpdateDueDate }) {
   if (!todos.length) {
     return <p style={{ opacity: 0.7, marginTop: 12 }}>No tasks yet. Add one!</p>;
   }
@@ -15,6 +16,7 @@ function TodoList({ todos, onToggle, onDelete, onEdit }) {
           onToggle={onToggle}
           onDelete={onDelete}
           onEdit={onEdit}
+          onUpdateDueDate={onUpdateDueDate}
         />
       ))}
     </div>
