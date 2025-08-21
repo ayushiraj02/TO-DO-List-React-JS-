@@ -1,5 +1,6 @@
 .app {
   max-width: 540px;
+  width: 100%;
   padding: 20px;
   background: #152044; /* richer navy */
   border-radius: 16px;
@@ -8,6 +9,7 @@
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   background: #0d1732;
@@ -18,12 +20,13 @@
 }
 
 .input {
-  flex: 1;
+  flex: 1 1 200px;
   padding: 10px 12px;
   border: none;
   background: transparent;
   font-size: 1rem;
   color: #e6e6e6;
+  min-width: 0;
 }
 
 .input::placeholder {
@@ -84,7 +87,7 @@
 .addBtn, .clearBtn, .delBtn {
   transition: all 0.2s ease;
 }
-.addBtn:hover { background: #4752c4; }
+
 .delBtn:hover { background: #7f1d1d; }
 
 
@@ -111,12 +114,15 @@
 
 .filter-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 16px;
   gap: 10px; 
 }
 
 .filter-btn {
+  flex: 1 1 auto;
+  text-align: center;
   padding: 8px 16px;
   border-radius: 20px;
   background: #0c1630;
@@ -163,11 +169,21 @@
   color: #e6e6e6;
 }
 
-.footer {
+/* .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  font-size: 14px;
+  color: #98a2b3;
+} */
+
+.footer,
+.app > div:last-child { /* your stats + clear btn container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
   font-size: 14px;
   color: #98a2b3;
 }
@@ -175,4 +191,44 @@
 .footer button {
   padding: 8px 12px;
   font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+
+  .header {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .input {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .addBtn, .clearBtn, .delBtn, .editBtn {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .item {
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .due-date {
+    font-size: 11px;
+  }
+
+  .footer {
+    font-size: 12px;
+  }
 }

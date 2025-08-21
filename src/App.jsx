@@ -96,7 +96,7 @@ const updateDueDate = (id, dueDate) => {
 
   return (
     <div className="app">
-      <h1 style={{ marginTop: 0 }}>React To-Do</h1>
+      <h1 style={{ marginTop: 0 }}>Write It Down ✍️</h1>
 
       <AddTodo onAdd={addTodo} />
 

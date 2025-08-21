@@ -26,17 +26,19 @@ a:hover {
   box-sizing: border-box; 
 }
 
+
 body {
   margin: 0;
   display: flex;
   justify-content: center;
-  place-items: center;
+  align-items: center; /* safer */
   min-width: 320px;
   height: 100vh;
   background: linear-gradient(-45deg, #0f172a, #0f172a, #530246, #0e2d5f);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
 }
+
 
 @keyframes gradientBG {
   0% {background-position: 0% 50%;}
